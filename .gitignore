@@ -1,0 +1,69 @@
+money-trip-split.xlsx
+
+
+# User-specific files
+.vs
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.csproj.bak
+
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+
+# =========================
+# Visual Studio
+# =========================
+.vs/
+bin/
+obj/
+*.pdb
+*.ncrunch*
+*.nCrunchProject
+*.sln.ide
+*.csproj.user
+*.vbproj.user
+*.sqlproj.user
+*.dtproj.user
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+*.userosscache
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+# but keep track of directories ending in .cache
+!*.[Cc]ache/
+
+# Others
+ClientBin/
+~$*
+*~
+*.dbmdl
+*.dbproj.schemaview
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
