@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Runtime.InteropServices.JavaScript;
 using WiredBrainCoffee.DataProcessor.Model;
 
 namespace WiredBrainCoffee.DataProcessor.Parsing
@@ -11,6 +12,10 @@ namespace WiredBrainCoffee.DataProcessor.Parsing
 
             foreach (var csvLine in csvlines)
             {
+                if (string.IsNullOrEmpty(csvLine))
+                {
+                    continue;
+                }
                 var machineDataItem = Parse(csvLine);
 
                 machineDataItems.Add(machineDataItem);
@@ -23,6 +28,19 @@ namespace WiredBrainCoffee.DataProcessor.Parsing
         {
             var lineItems = csvLine.Split(';');
 
+            if (lineItems.Length != 2)
+            {
+                throw new Exception($"Invalid csv line: {csvLine}");
+            }
+
+            //if (!DateTime.TryParse(lineItems[1], out DateTime dateTime))
+            //{
+            //    throw new Exception($"Invalid dateTime in csv line: {csvLine}");
+            //}
+
+            //return new MachineDataItem(lineItems[0], dateTime);
+
+            // this worked OK, because of InvariantCulture
             return new MachineDataItem(lineItems[0], DateTime.Parse(lineItems[1], CultureInfo.InvariantCulture));
         }
     }
