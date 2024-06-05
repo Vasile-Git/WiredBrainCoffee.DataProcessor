@@ -33,11 +33,12 @@ namespace WiredBrainCoffee.DataProcessor.Parsing
                 throw new Exception($"Invalid csv line: {csvLine}");
             }
 
-            if (!DateTime.TryParse(lineItems[1], out DateTime dateTime))
-            //if (!DateTime.TryParseExact(lineItems[1], "dd-MM-yyyy h:mm:ss tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTime))
+            string[] formats = { "MM/dd/yyyy h:mm:ss tt", "dd-MM-yyyy h:mm:ss tt" };
+            if (!DateTime.TryParseExact(lineItems[1], formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTime))
             {
                 throw new Exception($"Invalid dateTime in csv line: {csvLine}");
             }
+
 
             return new MachineDataItem(lineItems[0], dateTime);
         }
