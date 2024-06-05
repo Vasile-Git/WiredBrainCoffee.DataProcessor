@@ -8,7 +8,7 @@ public class CsvLineParserTests
     public void ShouldParseValidLine()
     {
         // Arrange
-        string[] csvLines = new[] { "Cappuccino;10/27/2022 8:06:04 AM" };
+        string[] csvLines = new[] { "Cappuccino;23-10-2022 8:06:04 AM" };
 
         // Act
         var machineDataItems = CsvLineParser.Parse(csvLines);
@@ -17,7 +17,7 @@ public class CsvLineParserTests
         Assert.NotNull(machineDataItems);
         Assert.Single(machineDataItems);
         Assert.Equal("Cappuccino", machineDataItems[0].CoffeeType);
-        Assert.Equal(new DateTime(2022, 10, 27, 8, 6, 4), machineDataItems[0].CreatedAt);
+        Assert.Equal(new DateTime(2022, 10, 23, 8, 6, 4), machineDataItems[0].CreatedAt);
     }
 
     [Fact]
@@ -47,16 +47,15 @@ public class CsvLineParserTests
     }
 
 
-    // should be first the issue with InvariantCulture resolved!!
-    //[Fact]
-    //public void ShouldThrowExceptionForInvalidLine2()
-    //{
-    //    // Arrange
-    //    var csvLine = "Cappuccino;InvalidDateTime";
-    //    var csvLines = new[] { csvLine };
+    [Fact]
+    public void ShouldThrowExceptionForInvalidLine2()
+    {
+        // Arrange
+        var csvLine = "Cappuccino;InvalidDateTime";
+        var csvLines = new[] { csvLine };
 
-    //    // Act and Assert
-    //    var exception = Assert.Throws<Exception>(() => CsvLineParser.Parse(csvLines));
-    //    Assert.Equal($"Invalid dateTime in csv line: {csvLine}", exception.Message);
-    //}
+        // Act and Assert
+        var exception = Assert.Throws<Exception>(() => CsvLineParser.Parse(csvLines));
+        Assert.Equal($"Invalid dateTime in csv line: {csvLine}", exception.Message);
+    }
 }
