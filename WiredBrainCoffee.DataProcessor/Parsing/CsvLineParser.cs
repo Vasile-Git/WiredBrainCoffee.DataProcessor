@@ -36,7 +36,7 @@ namespace WiredBrainCoffee.DataProcessor.Parsing
             string[] formats = { "MM/dd/yyyy h:mm:ss tt", "dd-MM-yyyy h:mm:ss tt" };
             if (!DateTime.TryParseExact(lineItems[1], formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dateTime))
             {
-                throw new Exception($"Invalid dateTime in csv line: {csvLine}");
+                throw new Exception($"Invalid dateTime: {csvLine}");
             }
 
 
